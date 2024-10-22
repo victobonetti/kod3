@@ -11,12 +11,10 @@
             background: radial-gradient(circle at 100%,
                     #8678f9,
                     #e058ff 50%,
-                    #930493 75%,
                     #8678f9 100%);
             font-weight: 600;
             background-size: 200% auto;
             color: #000;
-            background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: animatedTextGradient 3s linear infinite;
             font-family: monospace;
@@ -30,21 +28,15 @@
 
         .typewriter {
             overflow: hidden;
-            /* Ensures the content is not revealed until the animation */
             border-right: .15em solid #af00c3;
-            /* The typwriter cursor */
             white-space: nowrap;
-            /* Keeps the content on a single line */
             margin: 0 auto;
-            /* Gives that scrolling effect as the typing happens */
             letter-spacing: .15em;
-            /* Adjust as needed */
             animation:
                 typing 1s steps(40, end),
                 blink-caret .75s step-end infinite;
         }
 
-        /* The typing effect */
         @keyframes typing {
             from {
                 width: 0
@@ -55,9 +47,7 @@
             }
         }
 
-        /* The typewriter cursor effect */
         @keyframes blink-caret {
-
             from,
             to {
                 border-color: transparent
@@ -67,16 +57,43 @@
                 border-color: gray;
             }
         }
+
+        .gelatine {
+            animation: gelatine 0.5s;
+        }
+
+        @keyframes gelatine {
+            from,
+            to {
+                transform: scale(1, 1);
+            }
+
+            25% {
+                transform: scale(0.9, 1.1);
+            }
+
+            50% {
+                transform: scale(1.1, 0.9);
+            }
+
+            75% {
+                transform: scale(0.95, 1.05);
+            }
+        }
     </style>
 </head>
 
 <body class=" py-8 bg-gray-100 min-h-screen items-center flex flex-col ">
-    <img class="w-96" src="./public/3.png" alt="logo">
+    <img class="w-32" src="./public/3.png" alt="logo">
     <div class="text-center mb-10 ">
         <p class="typewriter font-monospace text-xs text-gray-600 mt-2">Apaixonados por códigos</p>
     </div>
 
-    <footer class=" absolute bottom-0 pb-8 text-gray-500 text-sm flex flex-col items-center">
+    <div id="logo" onclick="ani()" class="logo mt-8 w-72 h-72 rounded-full">
+
+    </div>
+
+    <footer class="absolute bottom-0 pb-8 text-gray-500 text-sm flex flex-col items-center">
         <svg class="w-6 h-6 cursor-pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
             <path
                 d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" />
@@ -85,5 +102,17 @@
     </footer>
 
 </body>
+
+<script>
+    function ani() {
+        const logoElement = document.getElementById('logo');
+        logoElement.classList.add('gelatine');
+
+        // Remove the animation class after it finishes to allow it to be reapplied
+        setTimeout(() => {
+            logoElement.classList.remove('gelatine');
+        }, 500); // Adjust this duration if the animation duration changes
+    }
+</script>
 
 </html>
